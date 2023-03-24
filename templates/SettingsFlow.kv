@@ -1,0 +1,216 @@
+#gf
+<SettingsFlow>:
+	name: "settings_flow"
+	FloatLayout:
+		# User
+		Label:
+			size_hint: (0.5, 0.05)
+			pos: (0, 680)
+			text: "User: " + root.manager.employee
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'
+
+		# Token
+		Label:
+			size_hint: (0.5, 0.05)
+			pos: (680, 680)
+			text: "Token: " + root.manager.token
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'right'
+
+		# Mordor
+		Label:
+			text: "Mordor"
+			size_hint: (0.1, 0.05)
+			pos: (0, 640)
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'
+		TextInput:
+			id: mordor_input
+			multiline: False
+			write_tab: False
+			input_filter: 'int'
+			size_hint: (0.2, 0.05)
+			pos: (128, 640)
+			text_size: self.size
+			valign: 'middle'
+			padding: 10
+			text: str(root.manager.mordor)
+
+		# Oven
+		Label:
+			text: "Oven"
+			size_hint: (0.1, 0.05)
+			pos: (0, 590)
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'
+		TextInput:
+			id: Oven_input
+			multiline: False
+			write_tab: False
+			input_filter: 'int'
+			size_hint: (0.2, 0.05)
+			pos: (128, 590)
+			text_size: self.size
+			valign: 'middle'
+			padding: 10
+			text: str(root.manager.Oven)
+
+		# IP Test Oven
+		CheckBox:
+			id: test_checkbox
+			size_hint: (0.05, 0.05)
+			pos: (0, 540)
+		Label:
+			text: "Test Oven"
+			size_hint: (0.15, 0.05)
+			pos: (40, 540)
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'
+
+		# Login with Generic Token
+		CheckBox:
+			id: no_login_checkbox
+			size_hint: (0.05, 0.05)
+			pos: (200, 540)
+		Label:
+			text: "ReFlow Oven"
+			size_hint: (0.25, 0.05)
+			pos: (240, 540)
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'
+
+		# Touch Screen
+		CheckBox:
+			id: touchscreen_checkbox
+			size_hint: (0.05, 0.05)
+			pos: (0, 490)
+		Label:
+			text: "Touch Screen"
+			size_hint: (0.15, 0.05)
+			pos: (40, 490)
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'
+
+		# Pcb Size
+		CheckBox:
+			id: Mid_checkbox
+			size_hint: (0.05, 0.05)
+			pos: (680, 640)
+		Label:
+			text: "Mid Size"
+			size_hint: (0.1, 0.05)
+			pos: (720, 640)
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'
+
+		CheckBox:
+			id: Large_checkbox
+			size_hint: (0.05, 0.05)
+			pos: (880, 640)
+		Label:
+			text: "Large Size"
+			size_hint: (0.1, 0.05)
+			pos: (920, 640)
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'
+
+		CheckBox:
+			id: Small_checkbox
+			size_hint: (0.05, 0.05)
+			pos: (1080, 640)
+		Label:
+			text: "Small Size"
+			size_hint: (0.1, 0.05)
+			pos: (1120, 640)
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'
+
+		CheckBox:
+			id: Temp_sensitive_checkbox
+			size_hint: (0.05, 0.05)
+			pos: (680, 590)
+		Label:
+			text: "Temp_sensitive"
+			size_hint: (0.1, 0.05)
+			pos: (720, 590)
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'
+
+		CheckBox:
+			id: Part_removal_checkbox
+			size_hint: (0.05, 0.05)
+			pos: (880, 590)
+		Label:
+			text: "Part_remover"
+			size_hint: (0.1, 0.05)
+			pos: (920, 590)
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'
+
+		CheckBox:
+			id: Normal_checkbox
+			size_hint: (0.05, 0.05)
+			pos: (1080, 590)
+		Label:
+			text: "Normal "
+			size_hint: (0.1, 0.05)
+			pos: (1120, 590)
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'
+
+		CheckBox:
+			id: Tiny_checkbox
+			size_hint: (0.05, 0.05)
+			pos: (680, 540)
+		Label:
+			text: "Tiny size"
+			size_hint: (0.1, 0.05)
+			pos: (720, 540)
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'
+
+		# Git Version
+		Label:
+			text: "Git Version: " + root.manager.git
+			size_hint: (1, 0.05)
+			pos: (10, 30)
+			text_size: self.size
+			halign: 'left'
+
+		# IP Addresses
+		Label:
+			text: "IP Addresses: " + root.manager.ip
+			size_hint: (1, 0.05)
+			pos: (10, 10)
+			text_size: self.size
+			halign: 'left'
+
+		# Fabrication Site
+		CheckBox:
+			id: fabrication_checkbox
+			group: 'backend'
+			active: True
+			size_hint: (0.05, 0.05)
+			pos: (0, 140)
+		Label:
+			text: "Fabrication Server"
+			size_hint: (0.15, 0.05)
+			pos: (40,140)
+			padding: (10, 10)
+			text_size: self.size
+			halign: 'left'

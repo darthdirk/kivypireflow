@@ -1,0 +1,172 @@
+#gf
+<PcbFlow>:
+	name: "pcbflow_page"
+	FloatLayout:
+		size_hint: (1, 1)
+		pos: (0, 0)
+		RelativeLayout:
+			id: left_pane
+			size_hint: (0.3, 1)
+			pos: (0, 0)
+
+			# Pcb Information
+			RelativeLayout:
+				id: Pcb_info_box
+				size_hint: (1, 0.65)
+				pos_hint: {'x': 0, 'y': 0.35}
+				GridLayout:
+					padding: 5
+					spacing: 5
+					cols: 1
+					Label:
+						text: "[u]Pcb Info[/u]"
+						font_size: 24
+						text_size: self.size
+						valign: 'top'
+						halign: 'center'
+						markup: True
+					Label:
+						text: root.po_text
+						font_size: 20
+						text_size: (self.width, None)
+						valign: 'top'
+						halign: 'left'
+						markup: True
+					Label:
+						text: root.customer_text
+						font_size: 20
+						text_size: (self.width, None)
+						valign: 'top'
+						halign: 'left'
+						markup: True
+					Label:
+						text: root.Pcb_text
+						font_size: 20
+						text_size: (self.width, None)
+						valign: 'top'
+						halign: 'left'
+						markup: True
+					Label:
+						text: root.pn_text
+						font_size: 20
+						text_size: (self.width, None)
+						valign: 'top'
+						halign: 'left'
+						markup: True
+
+					Label:
+						text: root.mac_text
+						font_size: 20
+						text_size: (self.width, None)
+						valign: 'top'
+						halign: 'left'
+						markup: True
+					Label:
+						text: root.station_text
+						font_size: 20
+						text_size: (self.width, None)
+						valign: 'top'
+						halign: 'left'
+						markup: True
+
+			# Recursive Notes
+			RelativeLayout:
+				id: notes_box
+				size_hint: (1, 0.25)
+				pos_hint: {'x': 0, 'y': 0.1}
+				GridLayout:
+					padding: 5
+					spacing: 5
+					cols: 1
+
+			# Load Next Pcb
+			RelativeLayout:
+				id: Pcb_next_box
+				size_hint: (1, 0.1)
+				pos_hint: {'x': 0, 'y': 0}
+				BoxLayout:
+					padding: 5
+					Button:
+						font_size: 24
+						id: Pcb_next_button
+						text: root.Pcb_next_button_text
+						on_release: root.restart()
+						disabled: True
+
+		# Right Pane
+		RelativeLayout:
+			id: right_pane
+			size_hint: (0.7, 1)
+			pos: (410, 0)
+
+			# Results
+			ScrollView:
+				id: tests_box
+				size_hint: (1, 0.90)
+				pos_hint: {'x': 0, 'y': 0.10}
+				do_scroll_x: False
+				do_scroll_y: True
+				GridLayout:
+					size_hint: (1, None)
+					cols: 1
+					row_default_height: 50
+					height: self.minimum_height
+					spacing: 0, 10
+					padding: 5, 5
+					id: test_list
+
+			# Progess Bar and Finish Button
+			RelativeLayout:
+				size_hint: (1, 0.10)
+				pos_hint: {'x': 0, 'y': 0}
+				BoxLayout:
+					size_hint: (1, 1)
+					orientation: 'horizontal'
+					padding: 5
+					spacing: 10
+
+					# Progress Bar
+					RelativeLayout:
+						size_hint: (0.75, 1)
+
+						# Background
+						BoxLayout:
+							pos: (0, 0)
+							size_hint: (1, 1)
+							canvas.before:
+								Color:
+									rgba: 1, .5, .5, 0.75
+								Rectangle:
+									pos: self.pos
+									size: self.size
+
+						# Foreground
+						BoxLayout:
+							id: progress_fg
+							pos: (0, 0)
+							size_hint_x: 1
+							canvas.before:
+								Color:
+									rgba: .25, 1, 0, 0.5
+								Rectangle:
+									pos: self.pos
+									size: self.size
+
+						# Overall Status
+						Label:
+							id: progress_label
+							pos: (0, 0)
+							size_hint: (1, 1)
+							font_size: 24
+							bold: True
+							color: [.5, 0, 0, 1]
+							text: root.progress_text
+
+					# Finish Button
+					Button:
+						id: finish_button
+						size_hint: (0.25, 1)
+						font_size: 24
+						text: root.finish_button_text
+						on_release: root.next_stage()
+						disabled: True

@@ -1,0 +1,28 @@
+# gf
+#:include force templates/Menu.kv
+
+Menu:
+	ScreenManagement:
+		id: mgmt
+		size_hint: (1, 0.95)
+		pos_hint: {'top': 0.95}
+		MainFlow:
+			id: main
+		SettingsFlow:
+			id: settings
+		PcbFlow:
+			id: pcb
+		LoaderFlow:
+			id: loader
+		FlasherFlow:
+			id: flasher
+		ProfileFlow:
+		    id: profile
+
+
+
+#:include force templates/MainFlow.kv
+#:include force templates/SettingsFlow.kv
+#:include force templates/PcbFlow.kv
+#:include force templates/ProfileFlow.kv
+#:include force templates/FlasherFlow.kv

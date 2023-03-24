@@ -1,0 +1,43 @@
+#gf
+<MainFlow>:
+	name: "main_flow"
+	FloatLayout:
+		id: main_layout
+
+		# User
+		Label:
+			size_hint: (0.5, 0.05)
+			pos: (0, 680)
+			text: "Safety First"
+			padding: (10, 10)
+			font_size: 24
+			text_size: self.size
+			halign: 'left'
+			valign: 'middle'
+
+		# Search
+		Label:
+			size_hint: (0.5, 0.05)
+			pos: (670, 680)
+			text: ""
+			padding: (10, 10)
+			font_size: 24
+			text_size: self.size
+			halign: 'right'
+			valign: 'middle'
+			id: search_filter_label
+
+		RecycleView:
+			size_hint: (1, 0.95)
+			pos: (0, 0)
+			viewclass: "ScrollView"
+			do_scroll_x: False
+			do_scroll_y: True
+			GridLayout:
+				size_hint: (1, None)
+				cols: 1
+				row_default_height: 150
+				height: self.minimum_height
+				spacing: 0, 20
+				padding: 20, 10
+				id: order_list

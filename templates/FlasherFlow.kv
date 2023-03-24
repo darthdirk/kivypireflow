@@ -1,0 +1,177 @@
+#gf
+<FlasherFlow>:
+	name: "flasher_flow"
+	FloatLayout:
+		size_hint: (1, 1)
+		pos: (0, 0)
+
+		# Top Pane
+		RelativeLayout:
+			id: top_pane
+			size_hint: (1, 0.8)
+			pos: (0, 0.2)
+			pos_hint: {'x': 0, 'y': 0.2}
+
+			BoxLayout:
+				size_hint: (1, 0.2)
+				pos_hint: {'x': 0, 'y': 0.8}
+				orientation: 'horizontal'
+				padding: 5
+				spacing: 10
+
+				# pcb_size
+				Spinner:
+					size_hint: (0.25, 1)
+					id: pcb_size_spinner
+					font_size: 48
+					text_size: self.size
+					halign: 'left'
+					valign: 'middle'
+					padding: (10, 10)
+					disabled: True
+
+
+
+				# temperature
+				Spinner:
+					size_hint: (0.25, 1)
+					id: temperature_spinner
+					font_size: 48
+					text_size: self.size
+					halign: 'left'
+					valign: 'middle'
+					padding: (10, 10)
+					disabled: True
+
+			BoxLayout:
+				size_hint: (1, 0.8)
+				pos_hint: {'x': 0, 'y': 0}
+				orientation: 'horizontal'
+				padding: 5
+				spacing: 10
+
+				BoxLayout:
+					size_hint: (0.75, 1)
+					pos_hint: {'x': 0, 'y': 0}
+					orientation: 'vertical'
+					padding: 5
+					spacing: 10
+
+
+					# extra Time
+					Label:
+						text: "Hurry to Mt Doom! +min :"
+						size_hint: (1, 0.1)
+						text_size: self.size
+						halign: 'left'
+						font_size: 36
+					Spinner:
+						size_hint: (1, 0.2)
+						id: add_time_spinner
+						font_size: 48
+						text_size: self.size
+						halign: 'left'
+						valign: 'middle'
+						padding: (10, 10)
+						disabled: True
+
+					# Venting
+					Label:
+						text: "Venting:"
+						size_hint: (1, 0.1)
+						text_size: self.size
+						halign: 'left'
+						font_size: 36
+					Spinner:
+						size_hint: (1, 0.2)
+						id: venting_spinner
+						font_size: 48
+						text_size: self.size
+						halign: 'left'
+						valign: 'middle'
+						padding: (10, 10)
+						disabled: True
+
+					# Profiles
+					Label:
+						text: "Previous Profile?:"
+						size_hint: (1, 0.1)
+						text_size: self.size
+						halign: 'left'
+						font_size: 36
+					Spinner:
+						size_hint: (1, 0.2)
+						id: previous_profile_spinner
+						font_size: 48
+						text_size: self.size
+						halign: 'left'
+						valign: 'middle'
+						padding: (10, 10)
+						disabled: True
+
+				Image:
+					id: space_sloth
+					source: 'templates/img/spacesloth.png'
+					size_hint: (0.25, 1)
+
+		# Bottom Pane
+		RelativeLayout:
+			id: bottom_pane
+			size_hint: (1, 0.2)
+			pos: (0, 0)
+			pos_hint: {'x': 0, 'y': 0}
+
+			# Progess Bar and Finish Button
+			RelativeLayout:
+				size_hint: (1, 1)
+				BoxLayout:
+					size_hint: (1, 1)
+					orientation: 'horizontal'
+					padding: 5
+					spacing: 10
+
+					# Progress Bar
+					RelativeLayout:
+						size_hint: (0.75, 1)
+
+						# Background
+						BoxLayout:
+							pos: (0, 0)
+							size_hint: (1, 1)
+							canvas.before:
+								Color:
+									rgba: 1, 1, 1, 0.75
+								Rectangle:
+									pos: self.pos
+									size: self.size
+
+						# Foreground
+						BoxLayout:
+							id: progress_fg
+							pos: (0, 0)
+							size_hint_x: 1
+							canvas.before:
+								Color:
+									rgba: 0, 1, 0, 0.5
+								Rectangle:
+									pos: self.pos
+									size: self.size
+
+						# Overall Status
+						Label:
+							id: progress_label
+							pos: (0, 0)
+							size_hint: (1, 1)
+							font_size: 48
+							bold: True
+							color: [0, 0, 0, 1]
+							text: root.progress_text
+
+					# Flow Next PCB
+					Button:
+						size_hint: (0.25, 1)
+						font_size: 48
+						id: pcb_next_button
+						text: root.pcb_next_button_text
+						on_release: root.next_pcb()
+						disabled: True

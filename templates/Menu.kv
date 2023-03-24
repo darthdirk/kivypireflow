@@ -1,0 +1,43 @@
+#gf
+<Menu>:
+	orientation: 'vertical'
+	size_hint_x: 1
+	size_y: '40dp'
+	pos_hint: {'top': 1}
+	ActionBar:
+		ActionView:
+			use_separator: True
+			ActionPrevious:
+				id: action_previous
+				title: root.APP_NAME
+				with_previous: False
+				on_release: root.back()
+			ActionLabel:
+				id: timer_label
+				text: "0:00"
+				size_hint: (1, 1)
+				font_size: '24sp'
+			ActionButton:
+				id: settings_button
+				text: 'Settings'
+				on_release: root.settings()
+			ActionButton:
+			    id: save_flow_settings_button
+			    text: 'Save'
+			    on_release: root.save_flow_settings()
+			ActionButton:
+				id: restart_button
+				text: 'Restart'
+				on_release: root.restart()
+			ActionButton:
+			    id: cancel_button
+			    text: 'Cancel'
+			    on_release: root.cancel()
+		    ActionButton:
+		        id: pcb_button
+		        text: 'Load pcb'
+		        on_release: root.load_pcb()
+		    ActionButton:
+		        id: filter_button
+		        text: 'Search  Profiles'
+		        on_release: root.
